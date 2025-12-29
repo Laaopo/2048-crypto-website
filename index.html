@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Crypto - Play, Earn, Repeat</title>
+    <meta name="description" content="The classic 2048 puzzle game evolved with crypto rewards and premium design.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                            950: '#042f2e',
+                        },
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-dark-900 text-white font-sans antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+    <!-- Background Gradients -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-brand-500/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob">
+        </div>
+        <div
+            class="absolute top-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-32 left-1/3 w-96 h-96 bg-pink-500/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-4000">
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-dark-900/50 border-b border-white/5"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-brand-400 to-blue-500 rounded-xl flex items-center justify-center font-bold text-xl shadow-lg shadow-brand-500/20">
+                        2048
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">Crypto</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features"
+                        class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Features</a>
+                    <a href="#rewards"
+                        class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Rewards</a>
+                    <a href="#about"
+                        class="text-sm font-medium text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="#roadmap"
+                        class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Roadmap</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.mohdakhtar.crypto2048&pli=1"
+                        target="_blank"
+                        class="px-5 py-2.5 bg-brand-500 hover:bg-brand-400 text-white text-sm font-medium rounded-full transition-all shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transform hover:scale-105">
+                        Download Now
+                    </a>
+                </div>
+
+                <div class="md:hidden">
+                    <button class="text-gray-300 hover:text-white focus:outline-none" id="mobile-menu-btn">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-dark-800/95 backdrop-blur-xl border-t border-white/5" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#features"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">Features</a>
+                <a href="#rewards"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">Rewards</a>
+                <a href="#about"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">About</a>
+                <a href="#roadmap"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">Roadmap</a>
+                <a href="#download"
+                    class="block px-3 py-2 mt-4 text-center rounded-md text-base font-bold bg-brand-600 text-white">Download
+                    App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div class="w-full lg:w-1/2 text-center lg:text-left" data-aos="fade-right">
+                    <div
+                        class="inline-flex items-center px-3 py-1 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300 text-sm font-medium mb-6">
+                        <span class="flex h-2 w-2 rounded-full bg-brand-400 mr-2"></span>
+                        New Version 1.0.3 Available
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-bold tracking-tight leading-tight mb-6">
+                        Merge Tiles. <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-blue-500">Earn
+                            Crypto.</span>
+                    </h1>
+                    <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        The classic 2048 puzzle evolved. Enjoy smooth gameplay, beautiful visuals, and earn real rewards
+                        as you play.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="https://play.google.com/store/apps/details?id=com.mohdakhtar.crypto2048&pli=1"
+                            target="_blank"
+                            class="group flex items-center px-8 py-4 bg-white text-dark-900 rounded-xl font-bold text-lg transition-all hover:bg-brand-50 shadow-xl shadow-white/5 hover:shadow-brand-500/20 hover:-translate-y-1">
+                            <svg class="w-6 h-6 mr-2 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                            </svg>
+                            Get on Google Play
+                        </a>
+                        <a href="#features"
+                            class="px-8 py-4 rounded-xl font-medium text-white border border-white/10 hover:bg-white/5 transition-all">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 relative" data-aos="fade-left">
+                    <!-- Phone Mockup -->
+                    <div class="relative w-72 mx-auto lg:mr-auto animate-float">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-purple-600 rounded-[2.5rem] blur opacity-75">
+                        </div>
+                        <div
+                            class="relative bg-dark-900 rounded-[2rem] border-[8px] border-dark-800 overflow-hidden shadow-2xl h-[580px]">
+                            <!-- Screen Content Placeholder -->
+                            <div
+                                class="w-full h-full bg-gradient-to-br from-dark-800 to-dark-900 flex flex-col relative">
+                                <!-- Status Bar -->
+                                <div class="h-6 w-full flex justify-between items-center px-4 pt-2">
+                                    <div class="text-[10px] text-white">9:41</div>
+                                    <div class="flex space-x-1">
+                                        <div class="w-3 h-3 rounded-full border border-white"></div>
+                                        <div class="w-3 h-3 rounded-full border border-white"></div>
+                                    </div>
+                                </div>
+                                <!-- Game Header -->
+                                <div class="px-4 py-6 flex justify-between items-center">
+                                    <div class="text-2xl font-bold text-white">2048</div>
+                                    <div class="bg-dark-700 px-3 py-1 rounded-lg text-brand-400 font-bold">1240</div>
+                                </div>
+                                <!-- Grid Mockup -->
+                                <div class="flex-1 px-4 flex items-center justify-center">
+                                    <div class="w-full aspect-square bg-dark-700 rounded-lg p-2 grid grid-cols-4 gap-2">
+                                        <div
+                                            class="bg-dark-800 rounded flex items-center justify-center text-xl font-bold text-gray-500">
+                                            2</div>
+                                        <div
+                                            class="bg-dark-800 rounded flex items-center justify-center text-xl font-bold text-gray-500">
+                                            4</div>
+                                        <div class="bg-dark-800 rounded"></div>
+                                        <div class="bg-dark-800 rounded"></div>
+
+                                        <div
+                                            class="bg-brand-500/20 rounded flex items-center justify-center text-xl font-bold text-brand-400">
+                                            8</div>
+                                        <div class="bg-brand-500/20 rounded"></div>
+                                        <div class="bg-dark-800 rounded"></div>
+                                        <div class="bg-dark-800 rounded"></div>
+
+                                        <div class="bg-dark-800 rounded"></div>
+                                        <div class="bg-dark-800 rounded"></div>
+                                        <div
+                                            class="bg-purple-500/20 rounded flex items-center justify-center text-xl font-bold text-purple-400">
+                                            16</div>
+                                        <div class="bg-dark-800 rounded"></div>
+
+                                        <div class="bg-dark-800 rounded"></div>
+                                        <div class="bg-dark-800 rounded"></div>
+                                        <div class="bg-dark-800 rounded"></div>
+                                        <div class="bg-dark-800 rounded"></div>
+                                    </div>
+                                </div>
+                                <!-- Bottom Nav Mockup -->
+                                <div
+                                    class="h-16 bg-dark-800/50 backdrop-blur border-t border-white/5 flex justify-around items-center">
+                                    <div class="w-6 h-6 rounded-full bg-brand-500/20"></div>
+                                    <div class="w-6 h-6 rounded-full bg-white/10"></div>
+                                    <div class="w-6 h-6 rounded-full bg-white/10"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-dark-800/30 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-brand-400 font-semibold tracking-wide uppercase text-sm mb-3">Features</h2>
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">Why play 2048 Crypto?</h3>
+                <p class="text-gray-400 max-w-2xl mx-auto">More than just a game. We've added a layer of modern features
+                    to keep you engaged and rewarded.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="group p-8 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all hover:-translate-y-2 backdrop-blur-sm"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div
+                        class="w-14 h-14 bg-brand-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Earn Rewards</h4>
+                    <p class="text-gray-400 leading-relaxed">Collect crypto points as you merge tiles. Watch your wallet
+                        grow and redeem for exclusive in-game perks.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="group p-8 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all hover:-translate-y-2 backdrop-blur-sm"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Undo Moves</h4>
+                    <p class="text-gray-400 leading-relaxed">Made a mistake? No problem. Use our premium Undo feature to
+                        rewind time and keep your high score streak alive.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="group p-8 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all hover:-translate-y-2 backdrop-blur-sm"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Smooth Experience</h4>
+                    <p class="text-gray-400 leading-relaxed">Built with Flutter 3.9 for buttery smooth 120Hz animations.
+                        Haptic feedback support makes every move feel tactile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-20 relative overflow-hidden">
+        <!-- Decoration -->
+        <div
+            class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent hidden lg:block">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-brand-400 font-semibold tracking-wide uppercase text-sm mb-3">Roadmap</h2>
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">2048 P2E Journey</h3>
+                <p class="text-gray-400 max-w-2xl mx-auto">Our path from classic puzzle to crypto ecosystem.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Phase 1 -->
+                <div class="relative group" data-aos="fade-up" data-aos-delay="0">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-br from-brand-500/20 to-purple-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+                    </div>
+                    <div
+                        class="relative p-6 bg-dark-800/80 backdrop-blur-md border border-white/5 rounded-2xl h-full hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="px-3 py-1 text-xs font-bold text-brand-400 bg-brand-500/10 rounded-full border border-brand-500/20">Phase
+                                1</span>
+                            <span class="text-xs text-gray-500 font-mono">Month 1-2</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Foundation & Economy</h4>
+                        <p class="text-sm text-gray-400 mb-4">Establishing the core tokenomics.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-brand-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Finalize Tokenomics
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-brand-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Write Whitepaper
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-brand-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Smart Contract (BEP-20)
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-brand-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Community Setup
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="relative group" data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-br from-brand-500/20 to-purple-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+                    </div>
+                    <div
+                        class="relative p-6 bg-dark-800/80 backdrop-blur-md border border-white/5 rounded-2xl h-full hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="px-3 py-1 text-xs font-bold text-blue-400 bg-blue-500/10 rounded-full border border-blue-500/20">Phase
+                                2</span>
+                            <span class="text-xs text-gray-500 font-mono">Month 3-4</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Build & Testnet</h4>
+                        <p class="text-sm text-gray-400 mb-4">Connecting game engine to Web3.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Web3 Integration
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Reward Oracle
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Security Audit
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Alpha Testing
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="relative group" data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-br from-brand-500/20 to-purple-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+                    </div>
+                    <div
+                        class="relative p-6 bg-dark-800/80 backdrop-blur-md border border-white/5 rounded-2xl h-full hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="px-3 py-1 text-xs font-bold text-purple-400 bg-purple-500/10 rounded-full border border-purple-500/20">Phase
+                                3</span>
+                            <span class="text-xs text-gray-500 font-mono">Month 5</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Launch & Liquidity</h4>
+                        <p class="text-sm text-gray-400 mb-4">Going live to the public.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-purple-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                TGE (Mainnet)
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-purple-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                PancakeSwap Listing
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-purple-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Liquidity Lock
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-purple-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                DEX & CEX Tracking
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="relative group" data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-br from-brand-500/20 to-purple-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+                    </div>
+                    <div
+                        class="relative p-6 bg-dark-800/80 backdrop-blur-md border border-white/5 rounded-2xl h-full hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="px-3 py-1 text-xs font-bold text-pink-400 bg-pink-500/10 rounded-full border border-pink-500/20">Phase
+                                4</span>
+                            <span class="text-xs text-gray-500 font-mono">Month 6+</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Scale & Sustain</h4>
+                        <p class="text-sm text-gray-400 mb-4">Growing the player base.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-pink-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Ad-Buyback Program
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-pink-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                </svg>
+                                Staking Launch
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-pink-500 mt-0.5 mr-2 flex-shrink-0" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Governance (DAO)
+                            </li>
+                            <li class="flex items-start text-sm text-gray-300">
+                                <svg class="w-4 h-4 text-pink-500 mt-0.5 mr-2 flex-shrink-0" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Partnerships
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Stats/Social Proof -->
+    <section class="py-16 border-y border-white/5 bg-dark-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div data-aos="zoom-in">
+                    <div class="text-4xl font-bold text-white mb-2">10k+</div>
+                    <div class="text-gray-500 text-sm font-medium uppercase tracking-wider">Downloads</div>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-4xl font-bold text-white mb-2">4.8</div>
+                    <div class="text-gray-500 text-sm font-medium uppercase tracking-wider">Store Rating</div>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-4xl font-bold text-white mb-2">1M+</div>
+                    <div class="text-gray-500 text-sm font-medium uppercase tracking-wider">Matches Played</div>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-4xl font-bold text-white mb-2">24/7</div>
+                    <div class="text-gray-500 text-sm font-medium uppercase tracking-wider">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-600/10"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to start earning?</h2>
+            <p class="text-xl text-gray-300 mb-10">Join thousands of players in the next generation 2048 experience.
+                Download now on Android.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.mohdakhtar.crypto2048&pli=1" target="_blank"
+                class="inline-block bg-white text-dark-900 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-2xl hover:scale-105 transform duration-200">
+                Download for Android
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-950 py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center font-bold text-sm">2048
+                    </div>
+                    <span class="font-bold text-lg">Crypto</span>
+                </div>
+                <div class="flex space-x-8 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Contact</a>
+                </div>
+                <div class="text-sm text-gray-500 mt-4 md:mt-0">
+                    &copy; 2025 2048 Crypto. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
