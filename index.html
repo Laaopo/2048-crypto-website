@@ -297,7 +297,185 @@
             </div>
         </div>
     </section>
-    <!-- Roadmap Section -->
+    <!-- 1. Token Metrics & Info -->
+    <section class="py-12 relative" id="tokenomics">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Metrics Card -->
+                <div class="bg-dark-800/50 backdrop-blur border border-white/5 rounded-2xl p-8" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center mr-3 text-sm">01</span>
+                        Token Metrics & Info
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                            <span class="text-gray-400">Token Name</span>
+                            <span class="font-bold">2048 Game Token (T2048)</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                            <span class="text-gray-400">Network</span>
+                            <span class="font-bold text-yellow-500">BNB Smart Chain (BEP-20)</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                            <span class="text-gray-400">Total Supply</span>
+                            <span class="font-bold">1,000,000,000 (Fixed)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Target Initial Price</span>
+                            <span class="font-bold text-brand-400">$0.01</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Allocation Chart/Table -->
+                <div class="bg-dark-800/50 backdrop-blur border border-white/5 rounded-2xl p-8" data-aos="fade-left">
+                    <h3 class="text-lg font-bold mb-6 text-gray-300">Token Allocation</h3>
+                    <div class="space-y-4">
+                        <!-- P2E Rewards -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>P2E Rewards Pool</span>
+                                <span class="font-bold text-brand-400">40%</span>
+                            </div>
+                            <div class="w-full bg-dark-900 rounded-full h-2.5">
+                                <div class="bg-brand-500 h-2.5 rounded-full" style="width: 40%"></div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">400M - Released as players earn.</p>
+                        </div>
+
+                        <!-- Ecosystem -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>Ecosystem & Treasury</span>
+                                <span class="font-bold text-purple-400">20%</span>
+                            </div>
+                            <div class="w-full bg-dark-900 rounded-full h-2.5">
+                                <div class="bg-purple-500 h-2.5 rounded-full" style="width: 20%"></div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">200M - 6-month lock, then 5% monthly.</p>
+                        </div>
+
+                        <!-- Liquidity & Staking -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Liquidity (LP)</span>
+                                    <span class="font-bold text-blue-400">15%</span>
+                                </div>
+                                <div class="w-full bg-dark-900 rounded-full h-2.5">
+                                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 15%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">150M - Locked 12 mo.</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Staking</span>
+                                    <span class="font-bold text-pink-400">15%</span>
+                                </div>
+                                <div class="w-full bg-dark-900 rounded-full h-2.5">
+                                    <div class="bg-pink-500 h-2.5 rounded-full" style="width: 15%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">150M - Long-term.</p>
+                            </div>
+                        </div>
+
+                        <!-- Team -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>Team & Dev</span>
+                                <span class="font-bold text-gray-400">10%</span>
+                            </div>
+                            <div class="w-full bg-dark-900 rounded-full h-2.5">
+                                <div class="bg-gray-600 h-2.5 rounded-full" style="width: 10%"></div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">100M - 1yr cliff, 24mo vest.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Stability Mechanics (Whitepaper) -->
+    <section class="py-20 bg-dark-800/30 relative" id="whitepaper">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div
+                    class="inline-flex items-center px-3 py-1 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300 text-xs font-bold uppercase tracking-wider mb-4">
+                    Price Control
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">The "Stability Mechanics"</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    To prevent volatility, we utilize Sink and Burn mechanisms designed for longevity.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Mechanic 1 -->
+                <div class="bg-dark-900/50 border border-white/5 p-8 rounded-2xl hover:border-brand-500/30 transition-colors"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">The 50/50 Burn Rule</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        When a player spends tokens on Power-ups (Undo, Shuffle):
+                    </p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center text-gray-300"><span
+                                class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>50% is permanently burned.</li>
+                        <li class="flex items-center text-gray-300"><span
+                                class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>50% returns to Rewards Pool.</li>
+                    </ul>
+                </div>
+
+                <!-- Mechanic 2 -->
+                <div class="bg-dark-900/50 border border-white/5 p-8 rounded-2xl hover:border-brand-500/30 transition-colors"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Withdrawal Fee</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        If a player withdraws tokens to their wallet, a <strong class="text-white">2-5% fee</strong> is
+                        charged and instantly burned. This discourages dumpers and constantly reduces supply.
+                    </p>
+                </div>
+
+                <!-- Mechanic 3 -->
+                <div class="bg-dark-900/50 border border-white/5 p-8 rounded-2xl hover:border-brand-500/30 transition-colors"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">External Ad-Loop</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Revenue from Google AdMob/Unity Ads is used to back the token.
+                    </p>
+                    <div class="p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
+                        <p class="text-xs text-blue-200">
+                            <strong>Action:</strong> Monthly, 30% of ad revenue is used to Buy Back & Burn T2048,
+                            creating a "Price Floor."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Development Roadmap -->
     <section id="roadmap" class="py-20 relative overflow-hidden">
         <!-- Decoration -->
         <div
@@ -306,9 +484,8 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-brand-400 font-semibold tracking-wide uppercase text-sm mb-3">Roadmap</h2>
-                <h3 class="text-3xl md:text-4xl font-bold mb-4">2048 P2E Journey</h3>
-                <p class="text-gray-400 max-w-2xl mx-auto">Our path from classic puzzle to crypto ecosystem.</p>
+                <h2 class="text-brand-400 font-semibold tracking-wide uppercase text-sm mb-3">2026 Roadmap</h2>
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">Development Journey</h3>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -325,40 +502,32 @@
                                 1</span>
                             <span class="text-xs text-gray-500 font-mono">Month 1-2</span>
                         </div>
-                        <h4 class="text-xl font-bold mb-2">Foundation & Economy</h4>
-                        <p class="text-sm text-gray-400 mb-4">Establishing the core tokenomics.</p>
+                        <h4 class="text-xl font-bold mb-2">The Core</h4>
+                        <p class="text-sm text-gray-400 mb-4">Building the secure foundation.</p>
                         <ul class="space-y-3">
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-brand-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                Finalize Tokenomics
+                                Contract Audit (Hacken)
                             </li>
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-brand-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                Write Whitepaper
+                                Backend "Secure Signer"
                             </li>
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-brand-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                Smart Contract (BEP-20)
-                            </li>
-                            <li class="flex items-start text-sm text-gray-300">
-                                <svg class="w-4 h-4 text-brand-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
-                                </svg>
-                                Community Setup
+                                Whitelist (Discord/X)
                             </li>
                         </ul>
                     </div>
@@ -377,40 +546,32 @@
                                 2</span>
                             <span class="text-xs text-gray-500 font-mono">Month 3-4</span>
                         </div>
-                        <h4 class="text-xl font-bold mb-2">Build & Testnet</h4>
-                        <p class="text-sm text-gray-400 mb-4">Connecting game engine to Web3.</p>
+                        <h4 class="text-xl font-bold mb-2">Launch & Liquidity</h4>
+                        <p class="text-sm text-gray-400 mb-4">Going live to the public.</p>
                         <ul class="space-y-3">
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                Web3 Integration
+                                TGE (PancakeSwap Listing)
                             </li>
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                Reward Oracle
+                                Liquidity Lock (PinkSale/UNCX)
                             </li>
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                Security Audit
-                            </li>
-                            <li class="flex items-start text-sm text-gray-300">
-                                <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
-                                </svg>
-                                Alpha Testing
+                                CMC & CG Listing
                             </li>
                         </ul>
                     </div>
@@ -427,42 +588,34 @@
                             <span
                                 class="px-3 py-1 text-xs font-bold text-purple-400 bg-purple-500/10 rounded-full border border-purple-500/20">Phase
                                 3</span>
-                            <span class="text-xs text-gray-500 font-mono">Month 5</span>
+                            <span class="text-xs text-gray-500 font-mono">Month 5-8</span>
                         </div>
-                        <h4 class="text-xl font-bold mb-2">Launch & Liquidity</h4>
-                        <p class="text-sm text-gray-400 mb-4">Going live to the public.</p>
+                        <h4 class="text-xl font-bold mb-2">The Scaling</h4>
+                        <p class="text-sm text-gray-400 mb-4">Tournaments and NFTs.</p>
                         <ul class="space-y-3">
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-purple-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                TGE (Mainnet)
+                                Weekly Jackpot Leaderboards
                             </li>
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-purple-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                PancakeSwap Listing
+                                NFT Tile Skins (+Earnings)
                             </li>
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-purple-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                Liquidity Lock
-                            </li>
-                            <li class="flex items-start text-sm text-gray-300">
-                                <svg class="w-4 h-4 text-purple-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
-                                </svg>
-                                DEX & CEX Tracking
+                                Staking V1 (Multipliers)
                             </li>
                         </ul>
                     </div>
@@ -479,26 +632,26 @@
                             <span
                                 class="px-3 py-1 text-xs font-bold text-pink-400 bg-pink-500/10 rounded-full border border-pink-500/20">Phase
                                 4</span>
-                            <span class="text-xs text-gray-500 font-mono">Month 6+</span>
+                            <span class="text-xs text-gray-500 font-mono">Month 9+</span>
                         </div>
-                        <h4 class="text-xl font-bold mb-2">Scale & Sustain</h4>
-                        <p class="text-sm text-gray-400 mb-4">Growing the player base.</p>
+                        <h4 class="text-xl font-bold mb-2">Global Expansion</h4>
+                        <p class="text-sm text-gray-400 mb-4">Cross-chain and Governance.</p>
                         <ul class="space-y-3">
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-pink-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                Ad-Buyback Program
+                                Cross-Chain (Polygon/Base)
                             </li>
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-pink-500 mt-0.5 mr-2 flex-shrink-0 animate-pulse" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
                                 </svg>
-                                Staking Launch
+                                CEX Listings (Tier 2)
                             </li>
                             <li class="flex items-start text-sm text-gray-300">
                                 <svg class="w-4 h-4 text-pink-500 mt-0.5 mr-2 flex-shrink-0" fill="none"
@@ -506,15 +659,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-                                Governance (DAO)
-                            </li>
-                            <li class="flex items-start text-sm text-gray-300">
-                                <svg class="w-4 h-4 text-pink-500 mt-0.5 mr-2 flex-shrink-0" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                                Partnerships
+                                DAO Governance
                             </li>
                         </ul>
                     </div>
